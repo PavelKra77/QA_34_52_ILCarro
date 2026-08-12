@@ -27,6 +27,10 @@ public class LoginPage extends BasePage {
     WebElement passwordIsRequired;
     @FindBy(xpath = "//*[contains(text(),'look like email')]")
     WebElement emailIsNotEmail;
+    @FindBy(xpath = "//h1[text()='Logged in']")
+    WebElement popUpSuccessLogin;
+    @FindBy(xpath = "//h1[text()='Login failed']")
+    WebElement popUpLoginFailed;
 
     public void typeLoginForm(UserLombok user) {
         inputEmail.sendKeys(user.getUsername());
@@ -47,5 +51,16 @@ public class LoginPage extends BasePage {
     public void clickBtnYalla() {
             btnYalla.click();
         }
+
+    public boolean isPopUpSuccessLoginDisplayed(){
+        return isElementDisplayed(popUpSuccessLogin);
+    }
+    public boolean isPopUpLoginFailedDisplayed() {
+        return isElementDisplayed(popUpLoginFailed);
+    }
+
+    public boolean isBtnYallaEnabled(){
+        return btnYalla.isEnabled();
+    }
 
 }
