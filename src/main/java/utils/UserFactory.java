@@ -10,7 +10,7 @@ public class UserFactory {
    public static UserLombok positiveUser(){
        UserLombok user = UserLombok.builder()
                .username(faker.internet().emailAddress())
-               .password("Qwert123!")
+               .password(PropertiesReader.getProperty("base.properties", "password_for_registration"))
                .firstName(faker.name().firstName())
                .lastName(faker.name().lastName())
                .build();

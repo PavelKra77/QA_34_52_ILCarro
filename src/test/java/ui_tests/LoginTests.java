@@ -125,8 +125,11 @@ public class LoginTests extends AppManager {
                 .build();
         loginPage.typeLoginForm(emptyUser);
         loginPage.clickBtnYalla();
-        Assert.assertTrue(new LoginPage(getDriver())
-                .validateTextInLoginEmail("Email is required"));
+        softAssert.assertFalse(loginPage.isBtnYallaEnabled(),
+                "validate isBtnYallaEnabled()");
+        softAssert.assertTrue(loginPage.isTextInErrorPresent("Email is required"),
+                "validate message: Email is required");
+        softAssert.assertAll();
 
     }
 
@@ -138,9 +141,11 @@ public class LoginTests extends AppManager {
                 .build();
         loginPage.typeLoginForm(emptyUser);
         loginPage.clickBtnYalla();
-        Assert.assertTrue(new LoginPage(getDriver())
-                .validateTextInLoginPassword("Password is required"));
-
+        softAssert.assertFalse(loginPage.isBtnYallaEnabled(),
+                "validate isBtnYallaEnabled()");
+        softAssert.assertTrue(loginPage.isTextInErrorPresent("Password is required"),
+                "validate message: Password is required");
+        softAssert.assertAll();
     }
 
 }
