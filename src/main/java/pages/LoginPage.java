@@ -32,6 +32,7 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//h1[text()='Login failed']")
     WebElement popUpLoginFailed;
 
+
     public void typeLoginForm(UserLombok user) {
         inputEmail.sendKeys(user.getUsername());
         inputPassword.sendKeys(user.getPassword());
@@ -62,5 +63,7 @@ public class LoginPage extends BasePage {
     public boolean isBtnYallaEnabled(){
         return btnYalla.isEnabled();
     }
+
+
 
 }
