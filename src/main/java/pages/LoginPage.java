@@ -31,7 +31,8 @@ public class LoginPage extends BasePage {
     WebElement popUpSuccessLogin;
     @FindBy(xpath = "//h1[text()='Login failed']")
     WebElement popUpLoginFailed;
-
+    @FindBy(xpath = "//button[text()='Ok']")
+    WebElement btnOk;
 
     public void typeLoginForm(UserLombok user) {
         inputEmail.sendKeys(user.getUsername());
@@ -50,7 +51,7 @@ public class LoginPage extends BasePage {
     }
 
     public void clickBtnYalla() {
-            btnYalla.click();
+        clickWait(btnYalla);
         }
 
     public boolean isPopUpSuccessLoginDisplayed(){
@@ -64,6 +65,7 @@ public class LoginPage extends BasePage {
         return btnYalla.isEnabled();
     }
 
-
+    public void clickBtnOk() {
+        clickWait(btnOk);}
 
 }

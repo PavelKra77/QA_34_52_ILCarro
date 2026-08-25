@@ -57,4 +57,9 @@ public abstract class BasePage {
     public boolean  isElementDisplayed(WebElement element){
         return element.isDisplayed();
     }
+
+    public void clickWait(WebElement element){
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions
+                        .elementToBeClickable(element)).click();}
 }

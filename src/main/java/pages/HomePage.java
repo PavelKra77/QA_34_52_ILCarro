@@ -22,11 +22,16 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[text()='Sign up']")
     WebElement btnSignup;
 
+    @FindBy(xpath = "//a[text()=' Let the car work ']")
+    WebElement btnLetTheCarWork;
+
     public void clickBtnSignup(){btnSignup.click();}
 
     public void clickBtnLogin() {
         btnLogin.click();
     }
+
+    public void clickBtnLetTheCarWork(){btnLetTheCarWork.click();}
 
 
 }
