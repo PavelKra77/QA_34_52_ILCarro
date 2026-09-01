@@ -47,6 +47,7 @@ public class LetTheCarWorkPage extends BasePage {
     WebElement inputImage;
 
 
+
     public void typeLetTheCarWorkForm(Car car) {
         fieldLocation.sendKeys(car.getLocation());
         fieldManufacture.sendKeys(car.getManufacture());
@@ -54,14 +55,28 @@ public class LetTheCarWorkPage extends BasePage {
         fieldYear.sendKeys(car.getYear());
 //      fieldFuel.sendKeys(car.getFuel());
         chooseFuel(car.getFuel());
-        fieldSeats.sendKeys(String.valueOf(car.getSeats()));
-//      fieldSeats.sendKeys(car.getSeats().toString());
+        fieldSeats.sendKeys(Integer.toString(car.getSeats()));
+//        fieldSeats.sendKeys(String.valueOf(car.getSeats()));
+//        fieldSeats.sendKeys(car.getSeats().toString());
+//        fieldSeats.sendKeys(car.getSeats()+"");
         fieldCarClass.sendKeys(car.getCarClass());
         fieldCarRegistrationNumber.sendKeys(car.getCarRegistrationNumber());
         fieldPrice.sendKeys(String.valueOf(car.getPrice()));
         fieldAbout.sendKeys(car.getAbout());
 
 
+    }
+    public void clickAllFields(){
+        fieldLocation.click();
+        fieldManufacture.click();
+        fieldModel.click();
+        fieldYear.click();
+        fieldFuel.click();
+        fieldSeats.click();
+        fieldCarClass.click();
+        fieldCarRegistrationNumber.click();
+        fieldPrice.click();
+        fieldAbout.click();
     }
 
     private void chooseFuel(Fuel fuel){
@@ -88,8 +103,14 @@ public class LetTheCarWorkPage extends BasePage {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript
                 ("document.querySelector(\"button[type='submit']\").removeAttribute('disabled')");
-        btnSubmit.click();
+        btnSubmit.click();}
+
+    public void clickBtnSubmit() {
+            btnSubmit.click();
     }
 
+    public boolean isBtnSubmitEnabled() {
+        return btnSubmit.isEnabled();
+    }
 
 }
