@@ -24,11 +24,10 @@ public class AppManager {
     public void setup(Method method) {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--lang=en");   // чтобы все сообщения были на английском
+        //driver = new ChromeDriver();
         driver = new ChromeDriver(chromeOptions);
         driver.manage().window().maximize();
         logger.info("Start testing with method -->" + method.getName());
-
-
     }
 
     @AfterMethod(enabled = false)

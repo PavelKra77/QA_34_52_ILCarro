@@ -24,3 +24,5 @@ public class CarFactory {
                 .build();
     }
 }
+//Integer.toString(...) — преобразует число в String, так как private String year; ожидает строку (например, "2015", а не число 2015).
+// faker.options().option(...) — метод библиотеки Datafaker, который принимает массив или список и случайно выбирает из него один элемент.

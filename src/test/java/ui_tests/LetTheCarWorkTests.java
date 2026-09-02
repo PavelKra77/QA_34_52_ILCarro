@@ -79,7 +79,7 @@ public class LetTheCarWorkTests extends AppManager {
     }
 
     @Test
-    public void letTheCarWorkClickAllFieldsAndBtnSubmitDisabledTest(){
+    public void letTheCarWorkClickAllFieldsAndBtnSubmitDisabledNegativeTest(){
         letTheCarWorkPage.clickAllFields();
         letTheCarWorkPage.clickBtnSubmit();
         softAssert.assertFalse(letTheCarWorkPage.isBtnSubmitEnabled(),
@@ -104,7 +104,7 @@ public class LetTheCarWorkTests extends AppManager {
     }
 
     @Test
-    public void letTheCarWorkClickAllFieldsAndBtnSubmitEnabledTest(){
+    public void letTheCarWorkClickAllFieldsAndBtnSubmitEnabledNegativeTest(){
         letTheCarWorkPage.clickAllFields();
 
         softAssert.assertTrue(letTheCarWorkPage.isTextInErrorPresent("Wrong address"),
@@ -163,9 +163,7 @@ public class LetTheCarWorkTests extends AppManager {
     @Test
     public void letTheCarWorkClickWrongNextYearFieldAndBtnSubmitDisabledTest(){
         Car car = positiveCar();
-        int wrongYear = LocalDate.now().getYear() + 1;
-        car.setYear(String.valueOf(wrongYear));
-
+        car.setYear(String.valueOf(LocalDate.now().getYear() + 1));
         letTheCarWorkPage.typeLetTheCarWorkForm(car);
         letTheCarWorkPage.clickBtnSubmit();
         softAssert.assertFalse(letTheCarWorkPage.isBtnSubmitEnabled(),
@@ -186,5 +184,7 @@ public class LetTheCarWorkTests extends AppManager {
                 "validate message  Year required");
         softAssert.assertAll();
     }
+
+
 }
 
