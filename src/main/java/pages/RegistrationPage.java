@@ -35,11 +35,14 @@ public class RegistrationPage extends BasePage {
     @FindBy(xpath = "//label[@for='terms-of-use']")
     WebElement checkBoxLabel;
 
+    public void clickIAgree(){checkboxIAgree.click();}
 
     public void clickCheckboxTermsOfUse() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", checkBoxTermsOfUse);
     }
+//Так делают если стандартный метод element.click() не срабатывает и вызывает ошибку
+// например, если чекбокс скрыт за кастомными стилями, другим невидимым слоем или плавающей шапкой сайта
 
     public void clickCheckBoxWithActions(){
         int x = checkBoxLabel.getSize().getWidth();
@@ -50,13 +53,13 @@ public class RegistrationPage extends BasePage {
         actions.moveToElement(checkBoxLabel,-x / 10*3, -y / 2).click().perform();
     }
 
-    public void clickIAgree(){checkboxIAgree.click();}
     public void clickBtnYalla() {
         btnYalla.click();
     }
     public boolean isPopUpSuccessLoggedInDisplayed(){
         return isElementDisplayed(popUpSuccessLoggedIn);
     }
+    // метод проверяет, отображается ли на экране всплывающее окно (попап) об успешном входе в систему
 
     public void typeRegistrationForm(UserLombok user) {
         inputName.sendKeys(user.getFirstName());

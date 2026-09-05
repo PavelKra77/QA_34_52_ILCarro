@@ -28,8 +28,15 @@ public class TestNGListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         ITestListener.super.onTestFailure(result);
-        logger.error("test failed-->"+ result.getName()+" status-->"
-                +result.getStatus());
+        logger.error("test failed --> " + result.getName()
+                + " status --> " + result.getStatus());
+        Throwable throwable = result.getThrowable();
+        if (throwable != null) {
+            logger.error("Test failed: {}, Message: {}",
+                    result.getName(), throwable.getMessage());
+        } else
+            logger.error("Test failed: {}, Status: {}",
+                    result.getName(), result.getStatus());
         this.driver = ((AppManager) result.getInstance()).getDriver();
         TakeScreenShot.takeScreenShot((TakesScreenshot) driver);
     }

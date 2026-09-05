@@ -22,5 +22,5 @@ public enum HeaderMenu {
 }
 // (enum) — это независимые списки констант (например, типы топлива, роли пользователей, статусы). они доступны всему проекту
 // enum могут понадобиться где угодно: в классах dto (Car), в генераторах данных (CarFactory), в тестах или провайдерах данных.
-// Написали private final String locator - делаем Конструктои и Геттер через Generate
+// Написали private final String locator - делаем через Generate Конструктор и Геттер
 // У LOGO есть locator - ("//img[@alt='logo']"). Данные запрашивают так  HeaderMenu.LOGO.getLocator()).

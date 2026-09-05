@@ -33,8 +33,7 @@ public abstract class BasePage {
         }
         return false;
     }
-
-
+    //проверяем, присутствует ли текст хотя бы в одном из элементов на странице,
 
 
     public boolean isTextInElementPresent(WebElement element, String text) {
@@ -42,7 +41,6 @@ public abstract class BasePage {
             return new WebDriverWait(driver, Duration.ofSeconds(5))
                     .until(ExpectedConditions.textToBePresentInElement(element, text));
         }
-
         catch (RuntimeException e) {
 //            e.printStackTrace();
 //            System.out.println("created exeption");
@@ -100,4 +98,9 @@ public abstract class BasePage {
             default -> throw new IllegalArgumentException("Wrong item");
         }
     }
+
+    // <T BasePage extends> — T заменяет собой временную переменную .
+    //  extends BasePage Здесь будет класс T, но он обязательно должен быть дочерним по отношению к BasePage
+    // T  указывает, что метод вернет объект того самого конкретного типа T,
+    //clickHeaderButtons(HeaderMenu item) — имя метода и его входной параметр (элемент меню, на который нужно кликнуть).
 }

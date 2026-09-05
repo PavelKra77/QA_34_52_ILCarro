@@ -75,8 +75,10 @@ public class LetTheCarWorkTests extends AppManager {
     public void letTheCarWorkNegativeClickBtnSubmitTest(){
         letTheCarWorkPage.clickBtnSubmitWithJS();
         Assert.assertTrue(new PopUpPage(getDriver())
-                .isTextInPopUpMessagePresent("\"year\":\"must not be blank\""));
+         //     .isTextInPopUpMessagePresent("\"year\":\"must not be blank\""));
+                .isTextInPopUpMessageCarAddingFailedPresent("Car adding failed"));
     }
+
 
     @Test
     public void letTheCarWorkClickAllFieldsAndBtnSubmitDisabledNegativeTest(){

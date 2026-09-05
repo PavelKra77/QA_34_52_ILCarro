@@ -46,26 +46,28 @@ public class LetTheCarWorkPage extends BasePage {
     @FindBy(id="photos")
     WebElement inputImage;
 
-
+    private void chooseFuel(Fuel fuel){             // класс enum
+        fieldFuel.click();
+        driver.findElement(By.xpath(fuel.getLocator())).click();
+    }
 
     public void typeLetTheCarWorkForm(Car car) {
         fieldLocation.sendKeys(car.getLocation());
         fieldManufacture.sendKeys(car.getManufacture());
         fieldModel.sendKeys(car.getModel());
         fieldYear.sendKeys(car.getYear());
-//      fieldFuel.sendKeys(car.getFuel());
         chooseFuel(car.getFuel());
-        fieldSeats.sendKeys(Integer.toString(car.getSeats()));
-//        fieldSeats.sendKeys(String.valueOf(car.getSeats()));
+//      fieldFuel.sendKeys(car.getFuel());
+        fieldSeats.sendKeys(String.valueOf(car.getSeats()));
+//        fieldSeats.sendKeys(Integer.toString(car.getSeats()));
 //        fieldSeats.sendKeys(car.getSeats().toString());
 //        fieldSeats.sendKeys(car.getSeats()+"");
         fieldCarClass.sendKeys(car.getCarClass());
         fieldCarRegistrationNumber.sendKeys(car.getCarRegistrationNumber());
         fieldPrice.sendKeys(String.valueOf(car.getPrice()));
         fieldAbout.sendKeys(car.getAbout());
-
-
     }
+
     public void clickAllFields(){
         fieldLocation.click();
         fieldManufacture.click();
@@ -79,17 +81,11 @@ public class LetTheCarWorkPage extends BasePage {
         fieldAbout.click();
     }
 
-    private void chooseFuel(Fuel fuel){
-        fieldFuel.click();
-        driver.findElement(By.xpath(fuel.getLocator())).click();
-
-    }
-
     public void downloadImage(String fileName){
         inputImage.sendKeys(new File("src/test/resources/"
                 +fileName).getAbsolutePath());
-
     }
+    // .getAbsolutePath() — превращает относительный путь в абсолютный на жестком диске компьютера.
 
     public void clickFuelField() {
         fieldFuel.click();

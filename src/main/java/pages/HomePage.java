@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,6 +34,8 @@ public class HomePage extends BasePage {
     WebElement inputDates;
     @FindBy(xpath = "//button[@type='submit']")
     WebElement btnYalla;
+    @FindBy(xpath = "//h3[@class='no-cars-label ng-star-inserted']")
+    WebElement labelNoAvailableCar;
 
     public void clickBtnSignup(){btnSignup.click();}
 
@@ -41,6 +44,10 @@ public class HomePage extends BasePage {
     }
 
     public void clickBtnLetTheCarWork(){btnLetTheCarWork.click();}
+
+    public boolean validateTextLabelSearchCar(String text) {
+        return isTextInElementPresent(labelNoAvailableCar, text);
+    }
 
     public void typeSearchForm(String city, LocalDate startDate, LocalDate endDate){
         inputCity.sendKeys(city);
@@ -59,5 +66,18 @@ public class HomePage extends BasePage {
         inputDates.sendKeys(dates);
 
     }
+
+    public void typeSearchFormString(String city, String startDate, String endDate) {
+        inputCity.sendKeys(city);
+        inputDates.sendKeys(startDate + " - " + endDate);
+    }
+
+    public void clickBtnYallaWithJS() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript
+                ("document.querySelector(\"button[type='submit']\").removeAttribute('disabled')");;
+        btnYalla.click();}
+
+
 
 }
