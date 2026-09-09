@@ -99,6 +99,16 @@ public abstract class BasePage {
         }
     }
 
+    public boolean isUrlContainsText(String text){
+        try {
+            return new WebDriverWait(driver, Duration.ofSeconds(5))
+                    .until(ExpectedConditions.urlContains(text));
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     // <T BasePage extends> — T заменяет собой временную переменную .
     //  extends BasePage Здесь будет класс T, но он обязательно должен быть дочерним по отношению к BasePage
     // T  указывает, что метод вернет объект того самого конкретного типа T,

@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -36,6 +37,8 @@ public class HomePage extends BasePage {
     WebElement btnYalla;
     @FindBy(xpath = "//h3[@class='no-cars-label ng-star-inserted']")
     WebElement labelNoAvailableCar;
+    @FindBy(xpath = "//button[@aria-label='Choose month and year']")
+    WebElement btnYearOnCalendar;
 
     public void clickBtnSignup(){btnSignup.click();}
 
@@ -65,6 +68,42 @@ public class HomePage extends BasePage {
         System.out.println(dates);
         inputDates.sendKeys(dates);
 
+    }
+
+    public void typeSearchFormWithCalendar(String city, LocalDate startDate, LocalDate endDate){
+        inputCity.sendKeys(city);
+        inputDates.click();
+        typeCalendar(startDate);
+        typeCalendar(endDate);
+    }
+
+    private void typeCalendar(LocalDate date){
+        btnYearOnCalendar.click();
+        // //td[@aria-label='2026']     "//td[@aria-label='"+year+"']"
+        String year = Integer.toString(date.getYear());
+        WebElement btnYear = driver.findElement
+                (By.xpath("//td[@aria-label='"+year+"']"));
+        btnYear.click();
+        // //td[@aria-label="November 2026"]  "//td[@aria-label='"+month+" "+year+"']"
+        System.out.println(date.getMonth());
+        String month = createMonth(date.getMonth().toString());
+        System.out.println(month);
+        WebElement btnMonth = driver.findElement(By.xpath("//td[@aria-label='"+month+" "+year+"']"));
+        btnMonth.click();
+        // //td[@aria-label="September 11, 2026"]
+        System.out.println(date.getDayOfMonth());
+        String day = String.valueOf(date.getDayOfMonth());
+        WebElement btnDay = driver.findElement
+                (By.xpath("//td[@aria-label='" + month + " " + day + ", " + year + "']"));
+        btnDay.click();
+
+    }
+
+    // SEPTEMBER --> September
+    private String createMonth(String month){
+        return new StringBuilder().append(month.substring(0,1)
+                .toUpperCase()).append(month.substring(1)
+                .toLowerCase()).toString();
     }
 
     public void typeSearchFormString(String city, String startDate, String endDate) {
