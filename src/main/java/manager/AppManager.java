@@ -23,7 +23,7 @@ public class AppManager {
 
     public Logger logger = LoggerFactory.getLogger(AppManager.class);
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setup(Method method) {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--lang=en");   // чтобы все сообщения были на английском
@@ -35,7 +35,7 @@ public class AppManager {
         driver = new EventFiringDecorator<>(webDriverListener).decorate(driver);
     }
 
-    @AfterMethod(enabled = false)
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         if (driver != null) {
             driver.quit();
