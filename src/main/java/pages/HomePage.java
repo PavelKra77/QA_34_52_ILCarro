@@ -4,6 +4,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.time.LocalDate;
 
@@ -37,11 +38,15 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//button[@aria-label='Choose month and year']")
     WebElement btnYearOnCalendar;
 
-    public void clickBtnSignup(){btnSignup.click();}
+    //public void clickBtnSignup(){btnSignup.click();}
+
+    //public void clickBtnLogin() {btnLogin.click();}
+    public void clickBtnSignup() {
+        clickWait(btnSignup);
+    }
 
     public void clickBtnLogin() {
-        btnLogin.click();
-    }
+        clickWait(btnLogin);}
 
     public void clickBtnLetTheCarWork(){btnLetTheCarWork.click();}
 
