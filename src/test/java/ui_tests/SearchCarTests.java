@@ -13,13 +13,13 @@ public class SearchCarTests extends AppManager {
     HomePage homePage;
     SoftAssert softAssert = new SoftAssert();
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void openHomePage() {
         homePage = new HomePage(getDriver());
 
     }
 
-    @Test
+    @Test()
     public void searchCarPositiveTest() {
         String city = "Haifa";
         LocalDate startDate = LocalDate.now().plusDays(2);
@@ -48,6 +48,32 @@ public class SearchCarTests extends AppManager {
         Assert.assertTrue(homePage.isTextInErrorPresent("Dates are required"));
     }
 
+
+    @Test
+    public void searchCarWithCalendarMoreThanOneYearNegativeTest() {
+        String city = "Haifa";
+        LocalDate startDate = LocalDate.now().plusDays(3);
+        LocalDate endDate = LocalDate.now().plusYears(1).plusDays(1);
+        homePage.typeSearchFormWithCalendar(city, startDate, endDate);
+        homePage.pressEscape();
+        Assert.assertTrue(homePage.isTextInErrorPresent
+                ("Dates are required"));
+    }
+
+    @Test
+    public void searchCarWithCalendarStartDateLessTodayNegativeTest() {
+        String city = "Haifa";
+        LocalDate startDate = LocalDate.now().minusDays(2);
+        LocalDate endDate = LocalDate.now()
+                .plusDays(3);
+        homePage.typeSearchFormWithCalendar(city, startDate, endDate);
+        homePage.pressEscape();
+        Assert.assertTrue(homePage.isTextInErrorPresent
+                ("Dates are required"));
+    }
+
+
+
     @Test
     public void searchCarNegativeSameStartAndEndDatesTest() {
         String city = "Haifa";
@@ -55,8 +81,7 @@ public class SearchCarTests extends AppManager {
         LocalDate endDate = LocalDate.now();
         homePage.typeSearchForm(city, startDate, endDate);
         homePage.clickBtnYallaWithJS();
-        Assert.assertTrue(homePage.isTextInErrorPresent
-                ("You can't book car for less than a day"));
+        Assert.assertTrue(homePage.isTextInErrorPresent("You can't book car for less than a day"));
     }
 
     @Test
@@ -87,7 +112,7 @@ public class SearchCarTests extends AppManager {
     }
 
 
-    @Test
+    @Test(groups = "smoke")
     public void searchCarWithCalendarPositiveTest() {
         String city = "Haifa";
         LocalDate startDate = LocalDate.now().plusDays(2);
