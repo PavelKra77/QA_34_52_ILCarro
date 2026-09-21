@@ -33,13 +33,13 @@ public class AppManager {
         //driver = new ChromeDriver();
 
         if (browser.equals(Browser.CHROME.browserName())) {
-           ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.addArguments("--lang=en");   // чтобы все сообщения были на английском
-            chromeOptions.addArguments("--headless=new");
-            chromeOptions.addArguments("--window-size=1920,1080");
-            chromeOptions.addArguments("--no-sandbox");
-            chromeOptions.addArguments("--disable-dev-shm-usage");
-            driver = new ChromeDriver(chromeOptions);
+//           ChromeOptions chromeOptions = new ChromeOptions();
+//            chromeOptions.addArguments("--lang=en");   // чтобы все сообщения были на английском
+//            chromeOptions.addArguments("--headless=new");
+//            chromeOptions.addArguments("--window-size=1920,1080");
+//            chromeOptions.addArguments("--no-sandbox");
+//            chromeOptions.addArguments("--disable-dev-shm-usage");
+            driver = new ChromeDriver();
         }
         else if (browser.equals(Browser.FIREFOX.browserName())){
             driver = new FirefoxDriver();
@@ -48,11 +48,11 @@ public class AppManager {
             driver = new EdgeDriver();
         }
 
-        // driver.manage().window().maximize();
-        logger.info("Start testing with method -->" + method.getName());
+                logger.info("Start testing with method -->" + method.getName());
         WebDriverListener webDriverListener = new WDListener();
         driver = new EventFiringDecorator<>(webDriverListener).decorate(driver);
-        driver.manage().window().setSize(new org.openqa.selenium.Dimension(1200, 800));
+        driver.manage().window().maximize();
+        //driver.manage().window().setSize(new org.openqa.selenium.Dimension(1200, 800));
 
     }
 
