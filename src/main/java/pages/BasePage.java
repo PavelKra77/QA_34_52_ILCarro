@@ -63,23 +63,9 @@ public abstract class BasePage {
     }
 
     public void clickWait(WebElement element){
-        System.out.println("TAG = " + element.getTagName());
-        System.out.println("TEXT = [" + element.getText() + "]");
-
-        System.out.println("X = " + element.getRect().getX());
-        System.out.println("Y = " + element.getRect().getY());
-        System.out.println("WIDTH = " + element.getRect().getWidth());
-        System.out.println("HEIGHT = " + element.getRect().getHeight());
-
-        System.out.println("DISPLAY CSS = " + element.getCssValue("display"));
-        System.out.println("VISIBILITY CSS = " + element.getCssValue("visibility"));
-        System.out.println("OPACITY CSS = " + element.getCssValue("opacity"));
-
-        System.out.println("OUTER HTML = " + element.getAttribute("outerHTML"));
         new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions
                         .elementToBeClickable(element)).click();}
-
 
     public <T extends BasePage> T clickHeaderButtons(HeaderMenu item){
         new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions

@@ -19,10 +19,10 @@ public class HomePage extends BasePage {
                 (new AjaxElementLocatorFactory(driver, 10), this);
     }
 
-    @FindBy(xpath = "//a[text()='Log in']")
+    @FindBy(xpath = "//a[text()=' Log in ']")
     WebElement btnLogin;
 
-    @FindBy(xpath = "//a[text()='Sign up']")
+    @FindBy(xpath = "//a[text()=' Sign up ']")
     WebElement btnSignup;
 
     @FindBy(xpath = "//a[text()=' Let the car work ']")
