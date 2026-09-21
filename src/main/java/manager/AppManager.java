@@ -32,9 +32,9 @@ public class AppManager {
     public void setup(Method method) {
         //driver = new ChromeDriver();
         if (browser.equals(Browser.CHROME.browserName())) {
-            ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.addArguments("--lang=en");   // чтобы все сообщения были на английском
-            driver = new ChromeDriver(chromeOptions);
+//            ChromeOptions chromeOptions = new ChromeOptions();
+//            chromeOptions.addArguments("--lang=en");   // чтобы все сообщения были на английском
+            driver = new ChromeDriver();
         }
         else if (browser.equals(Browser.FIREFOX.browserName())){
             driver = new FirefoxDriver();
