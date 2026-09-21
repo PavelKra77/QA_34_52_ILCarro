@@ -62,15 +62,48 @@ public abstract class BasePage {
         return element.isDisplayed();
     }
 
-    public void clickWait(WebElement element){
-        System.out.println("URL = " + driver.getCurrentUrl());
-        System.out.println("TITLE = " + driver.getTitle());
-        System.out.println("DISPLAYED = " + element.isDisplayed());
-        System.out.println("ENABLED = " + element.isEnabled());
-        System.out.println("RECT = " + element.getRect());
-        new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions
-                        .elementToBeClickable(element)).click();}
+//    public void clickWait(WebElement element){
+//        new WebDriverWait(driver, Duration.ofSeconds(5))
+//                .until(ExpectedConditions
+//                        .elementToBeClickable(element)).click();}
+public void clickWait(WebElement element) {
+
+    List<WebElement> loginElements =
+            driver.findElements(By.xpath("//a[text()='Log in']"));
+
+    System.out.println("===== LOG IN =====");
+    System.out.println("COUNT = " + loginElements.size());
+
+    for (int i = 0; i < loginElements.size(); i++) {
+        WebElement e = loginElements.get(i);
+
+        System.out.println(
+                "LOG IN [" + i + "]"
+                        + " displayed=" + e.isDisplayed()
+                        + ", enabled=" + e.isEnabled()
+                        + ", html=" + e.getAttribute("outerHTML")
+        );
+    }
+
+    List<WebElement> signupElements =
+            driver.findElements(By.xpath("//a[text()='Sign up']"));
+
+    System.out.println("===== SIGN UP =====");
+    System.out.println("COUNT = " + signupElements.size());
+
+    for (int i = 0; i < signupElements.size(); i++) {
+        WebElement e = signupElements.get(i);
+
+        System.out.println(
+                "SIGN UP [" + i + "]"
+                        + " displayed=" + e.isDisplayed()
+                        + ", enabled=" + e.isEnabled()
+                        + ", html=" + e.getAttribute("outerHTML")
+        );
+    }
+
+    // Временно НЕ кликаем
+}
 
     public <T extends BasePage> T clickHeaderButtons(HeaderMenu item){
         new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions
