@@ -31,9 +31,14 @@ public class AppManager {
     @BeforeMethod(alwaysRun = true)
     public void setup(Method method) {
         //driver = new ChromeDriver();
+
         if (browser.equals(Browser.CHROME.browserName())) {
-//            ChromeOptions chromeOptions = new ChromeOptions();
-//            chromeOptions.addArguments("--lang=en");   // чтобы все сообщения были на английском
+           ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.addArguments("--lang=en");   // чтобы все сообщения были на английском
+            chromeOptions.addArguments("--headless=new");
+            chromeOptions.addArguments("--window-size=1920,1080");
+            chromeOptions.addArguments("--no-sandbox");
+            chromeOptions.addArguments("--disable-dev-shm-usage");
             driver = new ChromeDriver();
         }
         else if (browser.equals(Browser.FIREFOX.browserName())){
