@@ -2,6 +2,6 @@
 ./gradlew clean test
 ./gradlew clean qa
 ./gradlew clean scope
-./gradlew clean scope -Pbrowser=firefox
+./gradlew clean scope -Pbrowser=firefox         //запуск файла  scope
 ./gradlew clean qa_suites -Dsuite=smoke_tests
 ./gradlew clean groups -Dgroups=smoke
