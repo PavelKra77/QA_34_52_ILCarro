@@ -51,8 +51,8 @@ public class AppManager {
                 logger.info("Start testing with method -->" + method.getName());
         WebDriverListener webDriverListener = new WDListener();
         driver = new EventFiringDecorator<>(webDriverListener).decorate(driver);
-        driver.manage().window().maximize();
-        //driver.manage().window().setSize(new org.openqa.selenium.Dimension(1200, 800));
+        //driver.manage().window().maximize();
+        driver.manage().window().setSize(new org.openqa.selenium.Dimension(1920, 1080));
 
     }
 
