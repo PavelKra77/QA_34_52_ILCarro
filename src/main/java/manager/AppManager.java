@@ -39,7 +39,7 @@ public class AppManager {
             chromeOptions.addArguments("--window-size=1920,1080");
             chromeOptions.addArguments("--no-sandbox");
             chromeOptions.addArguments("--disable-dev-shm-usage");
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(chromeOptions);
         }
         else if (browser.equals(Browser.FIREFOX.browserName())){
             driver = new FirefoxDriver();
