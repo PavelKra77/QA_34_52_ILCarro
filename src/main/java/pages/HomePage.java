@@ -38,15 +38,15 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//button[@aria-label='Choose month and year']")
     WebElement btnYearOnCalendar;
 
-    //public void clickBtnSignup(){btnSignup.click();}
+    public void clickBtnSignup(){btnSignup.click();}
 
-    //public void clickBtnLogin() {btnLogin.click();}
-    public void clickBtnSignup() {
-        clickWait(btnSignup);
-    }
-
-    public void clickBtnLogin() {
-        clickWait(btnLogin);}
+    public void clickBtnLogin() {btnLogin.click();}
+//    public void clickBtnSignup() {
+//        clickWait(btnSignup);
+//    }
+//
+//    public void clickBtnLogin() {
+//        clickWait(btnLogin);}
 
     public void clickBtnLetTheCarWork(){btnLetTheCarWork.click();}
 
