@@ -63,7 +63,12 @@ public abstract class BasePage {
     }
 
     public void clickWait(WebElement element){
-        new WebDriverWait(driver, Duration.ofSeconds(10))
+        System.out.println("URL = " + driver.getCurrentUrl());
+        System.out.println("TITLE = " + driver.getTitle());
+        System.out.println("DISPLAYED = " + element.isDisplayed());
+        System.out.println("ENABLED = " + element.isEnabled());
+        System.out.println("RECT = " + element.getRect());
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions
                         .elementToBeClickable(element)).click();}
 
